@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I love you Shruthi darling ❤️ (Happy Propose Day)</title>
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  text-align:center;
+  color:white;
+  background: url('shruthi.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  height:100vh;
+}
+body::after{
+  content:"";
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.3);
+  z-index:0;
+}
+
+h1{ 
+  text-shadow:0 3px 8px rgba(0,0,0,.5); 
+  position: relative; 
+  z-index:1;
+  margin-top:20px;
+  font-size:2rem;
+}
+
+/* Bottom panel */
+.bottomPanel{
+  margin-top:auto;
+  padding-bottom:50px;
+  z-index:1;
+  position: relative;
+}
+
+.buttons{ 
+  margin-top:15px; 
+  position:relative; 
+  z-index:1;
+}
+button{
+  padding:15px 30px;
+  font-size:1.2rem;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  margin:0 10px;
+}
+#yes{ background:#ff0033; color:white;}
+#no{ background:white; color:#ff0033;}
+
+#message{
+  font-size:1.8rem;
+  margin:20px auto;
+  padding:14px 22px;
+  max-width:90%;
+  background:rgba(255,255,255,0.85);
+  border-radius:20px;
+  color:#5a2d0c;
+  font-weight:bold;
+  z-index:1;
+  position: relative;
+  min-height:60px;
+}
+
+/* Emoji rain */
+.emoji{
+  position:fixed;
+  bottom:-30px;
+  font-size:30px;
+  animation:floatUp linear forwards;
+  z-index:2;
+}
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<h1>I love you Shruthi darling ❤️ (Happy Propose Day)</h1>
+
+<div class="bottomPanel">
+  <div class="buttons">
+    <button id="yes">Love you too ❤️</button>
+    <button id="no">Hate you 😜</button>
+  </div>
+  <div id="message"></div>
+</div>
+
+<audio id="song" src="song.mp3" loop></audio>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const messageBox = document.getElementById("message");
+const song = document.getElementById("song");
+
+/* Start song on first click anywhere */
+document.body.addEventListener("click",()=>{
+  song.play();
+},{once:true});
+
+/* Both YES and NO show same message */
+function showFinalMessage(){
+  messageBox.textContent = "I love you too mama ❤️🥰😘";
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+}
+
+/* Handle clicks */
+yesBtn.onclick = showFinalMessage;
+noBtn.onclick = showFinalMessage;
+
+/* Emoji rain */
+setInterval(()=>{
+  const e = document.createElement("div");
+  e.className="emoji";
+  const hearts = ["❤️","💖","🥰","💋","😍","🍫"];
+  e.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+  e.style.left = Math.random()*100+"vw";
+  e.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),6000);
+},300);
+</script>
+</body>
+</html>
